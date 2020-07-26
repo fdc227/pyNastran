@@ -160,7 +160,7 @@ class GRID(Nastran):
 
 class CORD2R(Nastran):
     def __init__(self, CID, RID, A1, A2, A3, B1, B2, B3, C1, C2, C3):
-        self.name = 'CORD2R'
+        self.name = 'CORD2R*'
         self.attr = '*'
         self.var_list = [CID, RID, A1, A2, A3, B1, B2, B3, C1, C2, C3]
         self.printer_local_16()
@@ -272,4 +272,55 @@ class SPLINE7(Nastran):
         self.name = 'SPLINE7*'
         self.attr = '*'
         self.var_list = [EID, CAERO, AELIST, '', SETG, DZ, DTOR, CID, '', '', '', USAGE, METHOD, DZR, IA2, EPSBM]
+        self.printer_local_16()
+
+class AERO(Nastran):
+    def __init__(self, ACSID, VELOCITY, REFC, RHOrEF, SYMXZ, SYMXY):
+        self.name = 'AERO'
+        self.attr = ''
+        self.var_list = [ACSID, VELOCITY, REFC, RHOrEF, SYMXZ, SYMXY]
+        self.printer_local_8()
+
+class AEROS(Nastran):
+    def __init__(self, ACSID, RCSID, REFC, REFB, REFS, SYMXZ, SYMXY):
+        self.name = 'AEROS'
+        self.attr = ''
+        self.var_list = [ACSID, RCSID, REFC, REFB, REFS, SYMXZ, SYMXY]
+        self.printer_local_8()
+
+class MKAERO1(Nastran):
+    def __init__(self, m1, m2, m3, m4, m5, m6, m7, m8, k1, k2, k3, k4, k5, k6, k7, k8):
+        self.name = 'MKAERO1'
+        self.attr = ''
+        self.var_list = [m1, m2, m3, m4, m5, m6, m7, m8, k1, k2, k3, k4, k5, k6, k7, k8]
+        self.printer_local_8()
+
+class MKAERO2(Nastran):
+    def __init__(self, m1, k1, m2, k2, m3, k3, m4, k4):
+        self.name = 'MKAERO2'
+        self.attr = ''
+        self.var_list = [m1, k1, m2, k2, m3, k3, m4, k4]
+        self.printer_local_8()
+
+class PARAM(Nastran):
+    def __init__(self, N, V1, *V2):
+        self.name = 'PARAM'
+        self.attr = ''
+        self.var_list = [N, V1, *V2]
+        self.printer_local_8()
+
+class CONM1(Nastran):
+    def __init__(self, EID, G, CID, M11, M21, M31, M32, M33, M41, M42, M43, M44, M51,
+                       M52, M53, M54, M55, M61, M62, M63, M64, M65, M66):
+        self.name = 'CONM1*'
+        self.attr = '*'
+        self.var_list = [EID, G, CID, M11, M21, M31, M32, M33, M41, M42, M43, M44, M51,
+                       M52, M53, M54, M55, M61, M62, M63, M64, M65, M66]
+        self.printer_local_16()
+
+class CONM2(Nastran):
+    def __init__(self, EID, G, CID, M, X1, X2, X3, l11, l21, l22, I31, I32, I33):
+        self.name = 'CONM2*'
+        self.attr = '*'
+        self.var_list = [EID, G, CID, M, X1, X2, X3, l11, l21, l22, I31, I32, I33]
         self.printer_local_16()
